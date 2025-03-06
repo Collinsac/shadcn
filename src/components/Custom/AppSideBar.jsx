@@ -33,7 +33,7 @@ const AppSideBar = () => {
         },
         {
           title: "Code Ethique",
-          route: "/home/kethique",
+          route: "/home/ethique",
         },
         {
           title: "Notes de Services",
