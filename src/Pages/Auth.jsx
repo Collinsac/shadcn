@@ -21,6 +21,11 @@ const Auth = () => {
               Connexion
             </Button>
           </Link>
+
+          <p className="text-sm mt-5 text-center text-gray-400">
+            Vous n'avez pas encore de compte? inscrivez-vous
+            <span className="underline">ici</span>
+          </p>
         </div>
       </div>
     </div>

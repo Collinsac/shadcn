@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Document, Page } from "react-pdf";
-import pdf from "../../assets/master.pdf";
+import pdf from "../../assets/masterTwo.pdf";
 const PDFComponent = () => {
   const [numPages, setNumPages] = useState();
   const [pageNumber, setPageNumber] = useState(1);
@@ -23,6 +23,8 @@ const PDFComponent = () => {
                 pageNumber={page}
                 renderTextLayer={false}
                 renderAnnotationLayer={false}
+                width={750}
+                scale={2}
               />
             );
           })}

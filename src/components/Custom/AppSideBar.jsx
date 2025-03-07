@@ -15,7 +15,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../ui/collapsible";
-import {  useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const AppSideBar = () => {
   const navigate = useNavigate();
@@ -43,15 +43,19 @@ const AppSideBar = () => {
     },
     {
       title: "Notifications",
+      route: "/home/quz",
     },
     {
       title: "Quizz",
+      route: "/home/quizz",
     },
     {
       title: "Declaration",
+      route: "/home/quiz",
     },
     {
       title: "FAQ",
+      route: "/home/quiz",
     },
   ];
 
@@ -59,7 +63,14 @@ const AppSideBar = () => {
     return (
       <SidebarMenuItem>
         <SidebarMenuButton className="p-5 font-bold rounded-none">
-          <p>{props.title}</p>
+          <NavLink
+            to={props.route}
+            className={({ isActive }) =>
+              `${isActive ? "text-red-600" : ""}`
+            }
+          >
+            {props.title}
+          </NavLink>
         </SidebarMenuButton>
       </SidebarMenuItem>
     );

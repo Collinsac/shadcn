@@ -7,11 +7,15 @@ import { Outlet } from "react-router-dom";
 const FirstLayout = () => {
  
   return (
-    <SidebarProvider className="flex-col min-h-screen">
+    <SidebarProvider className="flex-col min-h-screen ">
       <AppNav />
 
-      <div className="flex grow">
+      <div className="flex grow relative">
+        <div className="absolute p-20  z-20 left-0">
+
+
         <AppSideBar />
+        </div>
         <Outlet />
       </div>
     </SidebarProvider>

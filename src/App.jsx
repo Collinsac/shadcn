@@ -5,6 +5,7 @@ import Auth from "./Pages/Auth";
 import FirstLayout from "./Layouts/FirstLayout";
 import Home from "./Pages/Home";
 import Ethique from "./Pages/Ethique";
+import Quizz from "./Pages/Quizz";
 const App = () => {
   return (
     <BrowserRouter>
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/home" element={<FirstLayout />}>
           <Route index element={<Home />} />
           <Route path="/home/ethique" element={<Ethique />} />
+          <Route  path="/home/quizz" element={<Quizz/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
