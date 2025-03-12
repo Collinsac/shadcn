@@ -25,11 +25,11 @@ const AppSideBar = () => {
       sub: [
         {
           title: "Charte Utilisateurs",
-          route: "",
+          route: "/home/utilisateurs",
         },
         {
           title: "Charte Administrateurs",
-          route: "",
+          route: "/home/administrateurs",
         },
         {
           title: "Code Ethique",
@@ -37,13 +37,13 @@ const AppSideBar = () => {
         },
         {
           title: "Notes de Services",
-          route: "",
+          route: "/home/notes de services",
         },
       ],
     },
     {
       title: "Notifications",
-      route: "/home/quz",
+      route: "/home/notifications",
     },
     {
       title: "Quizz",
@@ -51,11 +51,11 @@ const AppSideBar = () => {
     },
     {
       title: "Declaration",
-      route: "/home/quiz",
+      route: "/home/declaration",
     },
     {
       title: "FAQ",
-      route: "/home/quiz",
+      route: "/home/faq",
     },
   ];
 
