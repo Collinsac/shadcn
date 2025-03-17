@@ -11,6 +11,8 @@ import NotesDeServices from "./Pages/NotesDeServices";
 import Notifications from "./Pages/Notifications";
 import Declaration from "./Pages/Declaration";
 import Faq from "./Pages/Faq";
+import QuizzLayout from "./Layouts/QuizzLayout";
+import QuizzFin from "./Pages/QuizzFin";
 const App = () => {
   return (
     <BrowserRouter>
@@ -19,7 +21,10 @@ const App = () => {
         <Route path="/home" element={<FirstLayout />}>
           <Route index element={<Home />} />
           <Route path="/home/ethique" element={<Ethique />} />
-          <Route path="/home/quizz" element={<Quizz />} />
+          <Route path="/home/quizz" element={<QuizzLayout />}>
+            <Route index element={<Quizz />} />
+            <Route path="/home/quizz/finish" element={<QuizzFin />} />
+          </Route>
           <Route path="/home/utilisateurs" element={<Utilisateurs />} />
           <Route path="/home/administrateurs" element={<Administrateurs />} />
           <Route path="/home/notes de services" element={<NotesDeServices />} />
