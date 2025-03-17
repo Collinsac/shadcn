@@ -61,18 +61,16 @@ const AppSideBar = () => {
 
   const TypeOne = (props) => {
     return (
-      <SidebarMenuItem>
-        <SidebarMenuButton className="p-5 font-bold rounded-none">
-          <NavLink
-            to={props.route}
-            className={({ isActive }) =>
-              `${isActive ? "text-red-600" : ""}`
-            }
-          >
+      <NavLink
+        to={props.route}
+        className={({ isActive }) => `${isActive ? "text-red-600" : ""}`}
+      >
+        <SidebarMenuItem>
+          <SidebarMenuButton className="p-5 font-bold rounded-none">
             {props.title}
-          </NavLink>
-        </SidebarMenuButton>
-      </SidebarMenuItem>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
+      </NavLink>
     );
   };
 
