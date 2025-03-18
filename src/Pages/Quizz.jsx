@@ -238,7 +238,7 @@ const Quizz = () => {
         <QuestionComponent key={question.id} {...question} />
       ))}
 
-      <Link to={"/home"}>
+      <Link to={"/home/quizz/finish"}>
         <Button className="mx-auto flex px-20 py-6 bg-yellow-500 hover:bg-yellow-600">
           Suivant
         </Button>

@@ -13,6 +13,8 @@ import Declaration from "./Pages/Declaration";
 import Faq from "./Pages/Faq";
 import QuizzLayout from "./Layouts/QuizzLayout";
 import QuizzFin from "./Pages/QuizzFin";
+import Demand from "./Pages/Demand";
+import WhistleBlowing from "./Pages/WhistleBlowing";
 const App = () => {
   return (
     <BrowserRouter>
@@ -21,6 +23,7 @@ const App = () => {
         <Route path="/home" element={<FirstLayout />}>
           <Route index element={<Home />} />
           <Route path="/home/ethique" element={<Ethique />} />
+          <Route path="/home/whistle" element={<WhistleBlowing />} />
           <Route path="/home/quizz" element={<QuizzLayout />}>
             <Route index element={<Quizz />} />
             <Route path="/home/quizz/finish" element={<QuizzFin />} />
@@ -31,6 +34,7 @@ const App = () => {
           <Route path="/home/notifications" element={<Notifications />} />
           <Route path="/home/declaration" element={<Declaration />} />
           <Route path="/home/faq" element={<Faq />} />
+          <Route path="/home/demand/:value" element={<Demand />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Document, Page } from "react-pdf";
-import pdf from "../../assets/masterTwo.pdf";
+
 const PDFComponent = (props) => {
   const [numPages, setNumPages] = useState();
   const [pageNumber, setPageNumber] = useState(1);
@@ -11,7 +11,7 @@ const PDFComponent = (props) => {
 
   return (
     <div className="flex justify-center">
-      <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
+      <Document file={props.pdf} onLoadSuccess={onDocumentLoadSuccess}>
         {/* <Page pageNumber={pageNumber} /> */}
 
         {Array.apply(null, Array(numPages))

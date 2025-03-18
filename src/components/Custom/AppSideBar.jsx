@@ -15,6 +15,14 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../ui/collapsible";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
 import { NavLink, useNavigate } from "react-router-dom";
 
 const AppSideBar = () => {
@@ -34,6 +42,10 @@ const AppSideBar = () => {
         {
           title: "Code Ethique",
           route: "/home/ethique",
+        },
+        {
+          title: "Whistle blowing",
+          route: "/home/whistle",
         },
         {
           title: "Notes de Services",
@@ -63,10 +75,12 @@ const AppSideBar = () => {
     return (
       <NavLink
         to={props.route}
-        className={({ isActive }) => `${isActive ? "text-red-600" : ""}`}
+        className={({ isActive }) =>
+          `${isActive ? "text-red-600 bg-gray-200" : ""}`
+        }
       >
         <SidebarMenuItem>
-          <SidebarMenuButton className="p-5 font-bold rounded-none">
+          <SidebarMenuButton className="p-5 font-bold rounded-none cursor-pointer">
             {props.title}
           </SidebarMenuButton>
         </SidebarMenuItem>
@@ -79,7 +93,7 @@ const AppSideBar = () => {
       <Collapsible defaultOpen className="group/collapsible">
         <SidebarMenuItem>
           <CollapsibleTrigger asChild>
-            <SidebarMenuButton className="p-5 font-bold rounded-none">
+            <SidebarMenuButton className="p-5 font-bold rounded-none cursor-pointer">
               <p>{props.title}</p>
             </SidebarMenuButton>
           </CollapsibleTrigger>
@@ -88,12 +102,40 @@ const AppSideBar = () => {
             <SidebarMenuSub className="border-none px-0 mr-0 gap-[1px]">
               {props.sub.map((item) => (
                 <SidebarMenuSubItem key={item.title}>
-                  <SidebarMenuSubButton
-                    className="p-5 font-bold rounded-none bg-white"
-                    onClick={() => navigate(item.route)}
-                  >
-                    {item.title}
-                  </SidebarMenuSubButton>
+                  {item.title === "Notes de Services" ? (
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger className="w-full">
+                          <SidebarMenuSubButton
+                            className={`p-5 font-bold rounded-none bg-white cursor-pointer ${
+                              item.route ===
+                              `/home/${window.location.pathname.split("/")[2]}`
+                                ? "bg-gray-200 text-red-600"
+                                : ""
+                            }`}
+                            onClick={() => navigate(item.route)}
+                          >
+                            {item.title}
+                          </SidebarMenuSubButton>
+                        </TooltipTrigger>
+                        <TooltipContent className="right-0 bg-gray-300">
+                          <p>Pas disponible pour le moment revenez plustard</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  ) : (
+                    <SidebarMenuSubButton
+                      className={`p-5 font-bold rounded-none bg-white cursor-pointer ${
+                        item.route ===
+                        `/home/${window.location.pathname.split("/")[2]}`
+                          ? "bg-gray-200 text-red-600"
+                          : ""
+                      }`}
+                      onClick={() => navigate(item.route)}
+                    >
+                      {item.title}
+                    </SidebarMenuSubButton>
+                  )}
                 </SidebarMenuSubItem>
               ))}
             </SidebarMenuSub>
