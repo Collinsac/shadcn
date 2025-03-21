@@ -1,9 +1,8 @@
-import React from 'react'
-
+import DiplayPDF from "@/components/Custom/DiplayPDF";
+import React from "react";
+import pdf from "../assets/Charte des utilisateurs de Commercial Bank - Cameroun_avec_couverture.pdf";
 const Utilisateurs = () => {
-  return (
-    <div>Utilisateurs</div>
-  )
-}
+  return <DiplayPDF pdf={pdf} />;
+};
 
-export default Utilisateurs
+export default Utilisateurs;

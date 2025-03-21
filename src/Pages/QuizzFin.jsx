@@ -12,7 +12,9 @@ const QuizzFin = () => {
         </Link>
       </p>
       <p className="underline">au code ethique</p>
-      <p className="underline">Acceder</p>
+      <Link to={"/home/demand/new"} className="underline">
+        Acceder
+      </Link>
     </div>
   );
 };
