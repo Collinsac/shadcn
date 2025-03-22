@@ -14,8 +14,12 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { useParams } from "react-router-dom";
 
 const Demand = () => {
+  const { value } = useParams();
+
+  console.log(value);
   return (
     <div className="flex flex-1 items-center justify-center">
       <div className="max-w-[1300px] flex-1 flex gap-x-3 px-4 py-4">
@@ -24,7 +28,9 @@ const Demand = () => {
         </div>
         <div className="flex-1 p-4 flex gap-y-5 flex-col">
           <div className="flex gap-x-3 items-center justify-center">
-            <h1 className="text-3xl">Demande d'Adhesion</h1>
+            <h1 className="text-3xl">
+              Demande {value === "new" ? null : "Renouvellement"} d'Adhesion
+            </h1>
           </div>
           <Input placeholder="Noms et Prenoms *" />
           <Input placeholder="Declaration *" />

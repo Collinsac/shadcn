@@ -231,7 +231,7 @@ const Quizz = () => {
   ];
 
   return (
-    <div className=" flex-1 p-10">
+    <div className=" flex-1 p-10 bg-gray-50 my-20 rounded-lg shadow-md mx-auto max-w-[1000px]">
       <h1 className="text-3xl mb-3">Quizz</h1>
 
       {Questions.map((question) => (

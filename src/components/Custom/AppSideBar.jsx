@@ -49,7 +49,7 @@ const AppSideBar = () => {
         },
         {
           title: "Notes de Services",
-          route: "/home/notes de services",
+          // route: "/home/notes de services",
         },
       ],
     },
