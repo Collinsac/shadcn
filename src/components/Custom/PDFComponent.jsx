@@ -25,6 +25,7 @@ const PDFComponent = (props) => {
                 renderAnnotationLayer={false}
                 width={750}
                 scale={props.scale}
+                className={"mb-10"}
               />
             );
           })}
