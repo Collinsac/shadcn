@@ -16,9 +16,21 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useParams } from "react-router-dom";
 
+import { format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
 const Demand = () => {
   const { value } = useParams();
 
+  const [date, setDate] = React.useState();
   console.log(value);
   return (
     <div className="flex flex-1 items-center justify-center">
@@ -39,10 +51,35 @@ const Demand = () => {
           <Input placeholder="Entreprise *" />
           <Input placeholder="Fonction *" />
           <Input placeholder="Description de titre *" />
+
+          {/* add feilds */}
+
           <Input placeholder="Firme de courtage *" />
 
           <div className="flex gap-x-10">
-            <Input placeholder="Date *" />
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant={"outline"}
+                  className={cn(
+                    "w-[280px] justify-start text-left font-normal",
+                    !date && "text-muted-foreground"
+                  )}
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {date ? format(date, "PPP") : <span>Pick a date</span>}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0">
+                <Calendar
+                  mode="single"
+                  selected={date}
+                  onSelect={setDate}
+                  initialFocus
+                />
+              </PopoverContent>
+            </Popover>
+
             <Input placeholder="Signature *" />
           </div>
 
