@@ -69,6 +69,10 @@ const AppSideBar = () => {
       title: "FAQ",
       route: "/home/faq",
     },
+    {
+      title: "Tableau de bord",
+      route: "/home/dashboard",
+    },
   ];
 
   const TypeOne = (props) => {

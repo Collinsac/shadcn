@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import React from "react";
+import React, { useState } from "react";
 import teamwork from "../assets/Images/teamwork.png";
 
 import {
@@ -17,7 +17,7 @@ import {
 import { useParams } from "react-router-dom";
 
 import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
+import { Calendar as CalendarIcon, PlusCircle, XCircle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
@@ -30,8 +30,50 @@ import {
 const Demand = () => {
   const { value } = useParams();
 
-  const [date, setDate] = React.useState();
-  console.log(value);
+  const [date, setDate] = useState();
+  const [fields, setFields] = useState([
+    {
+      id: 1,
+      value: "",
+    },
+  ]);
+
+  const [fieldsCourtage, setFieldsCourtage] = useState([
+    {
+      id: 1,
+      value: "",
+    },
+  ]);
+
+  const addField = (state) => {
+    !state
+      ? setFields((prev) => [...prev, { id: prev.length + 1, value: "" }])
+      : setFieldsCourtage((prev) => [
+          ...prev,
+          { id: prev.length + 1, value: "" },
+        ]);
+  };
+
+  const deleteField = (id, state) => {
+    !state
+      ? setFields((prev) => prev.filter((field) => id !== field.id))
+      : setFieldsCourtage((prev) => prev.filter((field) => id !== field.id));
+  };
+
+  const chageFieldValue = (id, value, state) => {
+    !state
+      ? setFields((prev) => {
+          let array = [...prev];
+          array[id - 1].value = value;
+          return array;
+        })
+      : setFieldsCourtage((prev) => {
+          let array = [...prev];
+          array[id - 1].value = value;
+          return array;
+        });
+  };
+
   return (
     <div className="flex flex-1 items-center justify-center">
       <div className="max-w-[1300px] flex-1 flex gap-x-3 px-4 py-4">
@@ -50,11 +92,62 @@ const Demand = () => {
           <Input placeholder="Direction *" />
           <Input placeholder="Entreprise *" />
           <Input placeholder="Fonction *" />
-          <Input placeholder="Description de titre *" />
+
+          <div className="relative">
+            <Input placeholder="Description de titre *" />
+            <PlusCircle
+              className="absolute right-5 top-1/2 -translate-y-1/2"
+              size={20}
+              strokeWidth={2}
+              onClick={() => addField()}
+            />
+          </div>
 
           {/* add feilds */}
 
-          <Input placeholder="Firme de courtage *" />
+          {fields.map((field) => (
+            <div key={field.id} className="relative">
+              <XCircle
+                className="absolute -left-8 top-1/2 -translate-y-1/2"
+                size={20}
+                strokeWidth={2}
+                onClick={() => deleteField(field.id)}
+              />
+              <Input
+                value={field.value}
+                onChange={(e) => chageFieldValue(field.id, e.target.value)}
+              />
+            </div>
+          ))}
+
+          <div className="relative">
+            <Input placeholder="Firme de courtage *" />
+            <PlusCircle
+              className="absolute right-5 top-1/2 -translate-y-1/2"
+              size={20}
+              strokeWidth={2}
+              onClick={() => addField(true)}
+            />
+          </div>
+
+          {/* add feilds */}
+
+          {fieldsCourtage.map((field) => (
+            <div key={field.id} className="relative">
+              <XCircle
+                className="absolute -left-8 top-1/2 -translate-y-1/2"
+                size={20}
+                strokeWidth={2}
+                onClick={() => deleteField(field.id, true)}
+              />
+              <Input
+                value={field.value}
+                onChange={(e) =>
+                  chageFieldValue(field.id, e.target.value, true)
+                }
+              />
+            </div>
+          ))}
 
           <div className="flex gap-x-10">
             <Popover>
