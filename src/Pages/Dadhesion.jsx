@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
 const Dadhesion = () => {
-  return (
-    <div>Dadhesion</div>
-  )
-}
+  return <div className="flex-1">
+    a
+  </div>;
+};
 
-export default Dadhesion
+export default Dadhesion;

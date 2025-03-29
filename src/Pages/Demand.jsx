@@ -14,7 +14,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import { format } from "date-fns";
 import { Calendar as CalendarIcon, PlusCircle, XCircle } from "lucide-react";
@@ -200,11 +200,20 @@ const Demand = () => {
                 </AlertDialogDescription> */}
               </AlertDialogHeader>
               <div className="justify-between flex items-center">
-                <AlertDialogAction className="p-0">
-                  <Button className="mx-auto flex px-8 bg-yellow-500 hover:bg-yellow-600">
-                    Oui
-                  </Button>
-                </AlertDialogAction>
+                <Link
+                  to={
+                    value === "new"
+                      ? "/home/dadhesion"
+                      : "/home/renouvellementdadhesion"
+                  }
+                >
+                  <AlertDialogAction className="p-0">
+                    <Button className="mx-auto flex px-8 bg-yellow-500 hover:bg-yellow-600">
+                      Oui
+                    </Button>
+                  </AlertDialogAction>
+                </Link>
+
                 <AlertDialogCancel className="p-0">
                   <Button className="mx-auto flex px-8 bg-yellow-500 hover:bg-yellow-600">
                     non

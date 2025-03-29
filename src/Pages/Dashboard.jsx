@@ -11,6 +11,17 @@ import {
 } from "chart.js";
 import { Bar, Doughnut } from "react-chartjs-2";
 import { Link, Outlet } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { XCircleIcon } from "lucide-react";
 
 ChartJS.register(
   ArcElement,
@@ -101,6 +112,49 @@ const Dashboard = () => {
       </div>
       <div className="mt-10">
         <Outlet />
+      </div>
+
+      <div className="flex items-center justify-between p-4">
+        <AlertDialog>
+          <AlertDialogTrigger>
+            <Button className=" bg-yellow-500 hover:bg-yellow-600">
+              Exporter
+            </Button>
+          </AlertDialogTrigger>
+
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle className="text-center my-5">
+                Exporter en ?
+              </AlertDialogTitle>
+            </AlertDialogHeader>
+            <div className="justify-between flex items-center">
+              <AlertDialogAction className="p-0">
+                <Button className="mx-auto flex px-8 bg-yellow-500 hover:bg-yellow-600">
+                  Excel
+                </Button>
+              </AlertDialogAction>
+
+              <AlertDialogAction className="p-0">
+                <Button className="mx-auto flex px-8 bg-yellow-500 hover:bg-yellow-600">
+                  Word
+                </Button>
+              </AlertDialogAction>
+
+              <AlertDialogAction className="p-0">
+                <Button className="mx-auto flex px-8 bg-yellow-500 hover:bg-yellow-600">
+                  PDF
+                </Button>
+              </AlertDialogAction>
+
+              <AlertDialogCancel className="p-0 px-2 absolute right-2 bg-transparent border-none shadow-none top-0">
+                <XCircleIcon size={3} />
+              </AlertDialogCancel>
+            </div>
+          </AlertDialogContent>
+        </AlertDialog>
+
+        <Button className=" bg-yellow-500 hover:bg-yellow-600">Relance</Button>
       </div>
     </div>
   );

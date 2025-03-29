@@ -19,6 +19,8 @@ import Dashboard from "./Pages/Dashboard";
 import DashboardFirstDisplay from "./Pages/DashboardFirstDisplay";
 import ListOfadherents from "./Pages/ListOfadherents";
 import ListOfNonadherents from "./Pages/ListOfNonadherents";
+import Dadhesion from "./Pages/Dadhesion";
+import RenouvellementDadhesion from "./Pages/RenouvellementDadhesion";
 const App = () => {
   return (
     <BrowserRouter>
@@ -38,6 +40,11 @@ const App = () => {
           <Route path="/home/notifications" element={<Notifications />} />
           <Route path="/home/declaration" element={<Declaration />} />
           <Route path="/home/faq" element={<Faq />} />
+          <Route path="/home/dadhesion" element={<Dadhesion />} />
+          <Route
+            path="/home/renouvellementdadhesion"
+            element={<RenouvellementDadhesion />}
+          />
           <Route path="/home/dashboard" element={<Dashboard />}>
             <Route index element={<DashboardFirstDisplay />} />
             <Route
