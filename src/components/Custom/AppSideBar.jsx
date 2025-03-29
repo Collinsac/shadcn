@@ -149,7 +149,7 @@ const AppSideBar = () => {
     );
   };
   return (
-    <Sidebar>
+    <Sidebar >
       <SidebarContent className="pt-[45px] overflow-hidden">
         <SidebarGroup className="px-0">
           <SidebarMenu>
