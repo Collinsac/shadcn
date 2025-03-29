@@ -1,11 +1,11 @@
+import Line from "@/components/Custom/Line";
+import Signature from "@/components/Custom/Signature";
 import React from "react";
 
 const Dadhesion = () => {
-  const Line = () => {
-    return <div className="py-3 border-b border-black"></div>;
-  };
   return (
     <div className="flex-1 p-10">
+      {/* page 1 */}
       <div className="bg-gray-50 rounded-md p-8 w-[70%] mx-auto">
         {/* header */}
         <div className="p-3 relative">
@@ -15,7 +15,7 @@ const Dadhesion = () => {
           </p>
           <p className="absolute bottom-0 mb-3 font-bold">Lorem, ipsum.</p>
         </div>
-
+        {/* gold page */}
         <div className="border-2 flex flex-col gap-y-4 bg-white border-yellow-500 rounded-tl-md rounded-br-md p-6 my-4">
           <div className="flex">
             <p>Je Soussigne(e), </p>
@@ -102,6 +102,8 @@ const Dadhesion = () => {
         </div>
       </div>
 
+      {/* page 2 */}
+
       <div className="bg-gray-50 rounded-md p-8 w-[70%] mx-auto mt-4">
         <div className="border-2 flex flex-col gap-y-4 bg-white border-yellow-500 rounded-tl-md rounded-br-md p-6 my-4">
           <p>
@@ -136,35 +138,7 @@ const Dadhesion = () => {
             provident ipsam necessitatibus reiciendis.
           </p>
 
-          <div className="flex gap-x-6 mb-10">
-            <div className="flex-1 flex flex-col gap-y-10">
-              <div className="flex">
-                <p>Lorem, ipsum dolor. </p>
-                <p className="flex-1 border-b border-black"></p>
-              </div>
-              {/*  */}
-              <div className="flex">
-                <p>Lorem, ipsum dolor. </p>
-                <p className="flex-1 border-b border-black"></p>
-              </div>
-            </div>
-            <div className="flex-1 flex flex-col gap-y-10">
-              <div className="flex">
-                <p>Lorem, ipsum dolor. </p>
-                <p className="flex-1 border-b border-black"></p>
-              </div>
-              {/* */}
-              <div className="flex">
-                <p>Lorem, ipsum dolor. </p>
-                <p className="flex-1 border-b border-black"></p>
-              </div>
-              {/*  */}
-              <div className="flex">
-                <p>Lorem, ipsum dolor. </p>
-                <p className="flex-1 border-b border-black"></p>
-              </div>
-            </div>
-          </div>
+          <Signature />
         </div>
       </div>
     </div>
