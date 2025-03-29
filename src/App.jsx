@@ -16,6 +16,9 @@ import QuizzFin from "./Pages/QuizzFin";
 import Demand from "./Pages/Demand";
 import WhistleBlowing from "./Pages/WhistleBlowing";
 import Dashboard from "./Pages/Dashboard";
+import DashboardFirstDisplay from "./Pages/DashboardFirstDisplay";
+import ListOfadherents from "./Pages/ListOfadherents";
+import ListOfNonadherents from "./Pages/ListOfNonadherents";
 const App = () => {
   return (
     <BrowserRouter>
@@ -35,7 +38,17 @@ const App = () => {
           <Route path="/home/notifications" element={<Notifications />} />
           <Route path="/home/declaration" element={<Declaration />} />
           <Route path="/home/faq" element={<Faq />} />
-          <Route path="/home/dashboard" element={<Dashboard />} />
+          <Route path="/home/dashboard" element={<Dashboard />}>
+            <Route index element={<DashboardFirstDisplay />} />
+            <Route
+              path="/home/dashboard/adherents"
+              element={<ListOfadherents />}
+            />
+            <Route
+              path="/home/dashboard/nonadherents"
+              element={<ListOfNonadherents />}
+            />
+          </Route>
           <Route path="/home/demand/:value" element={<Demand />} />
         </Route>
       </Routes>

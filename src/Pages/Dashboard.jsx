@@ -10,7 +10,7 @@ import {
   ArcElement,
 } from "chart.js";
 import { Bar, Doughnut } from "react-chartjs-2";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 ChartJS.register(
   ArcElement,
@@ -63,12 +63,15 @@ export const data = {
 };
 
 const Dashboard = () => {
-  const MenuComponent = () => {
+  const MenuComponent = ({ title, route }) => {
     return (
-      <div className="py-10 border-x border-t px-4 flex items-center justify-center flex-col cursor-pointer hover:bg-gray-200 transition-all ease-in-out duration-200">
-        <h2 className="text-2xl">Nombres d’adhérents</h2>
+      <Link
+        to={route}
+        className="py-10 border-x border-t px-4 flex items-center justify-center flex-col cursor-pointer hover:bg-gray-200 transition-all ease-in-out duration-200"
+      >
+        <h2 className="text-2xl">{title}</h2>
         <p className="text-xl">30650</p>
-      </div>
+      </Link>
     );
   };
   return (
@@ -80,8 +83,14 @@ const Dashboard = () => {
 
       <div className="flex p-4 gap-x-5 items-center">
         <div className="flex-1 bg-gray-100 border-b">
-          <MenuComponent />
-          <MenuComponent />
+          <MenuComponent
+            title="Nombres d’adhérents"
+            route="/home/dashboard/adherents"
+          />
+          <MenuComponent
+            title="Nombres de non adhérents"
+            route="/home/dashboard/nonadherents"
+          />
         </div>
         <div className="flex-[2] p-3 flex items-center justify-center h-[400px] shadow-sm rounded-md">
           <Bar options={options} data={data} />
@@ -90,7 +99,7 @@ const Dashboard = () => {
           <Doughnut data={data} />
         </div>
       </div>
-      <div>
+      <div className="mt-10">
         <Outlet />
       </div>
     </div>
