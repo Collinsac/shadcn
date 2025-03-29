@@ -29,10 +29,10 @@ const QuizzFin = () => {
           <span className="underline ml-3">ici</span>
         </Link>
       </p>
-      <p className="underline text-2xl">
-        Accéder a la fiche d’adhésion au code éthique
-      </p>
       <Link to={"/home/demand/new"} className="underline text-2xl">
+        Accéder a la fiche d’adhésion au code éthique
+      </Link>
+      <Link to={"/home/demand/renouvellement"} className="underline text-2xl">
         Accéder à la fiche de renouvellement d’adhésion au code éthique
       </Link>
     </div>
