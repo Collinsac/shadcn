@@ -75,7 +75,6 @@ const RenouvellementDadhesion = () => {
           </p>
         </div>
       </div>
-
       {/* page 2 */}
 
       <div className="bg-gray-50 rounded-md p-8 w-[70%] mx-auto mt-4">
