@@ -92,7 +92,7 @@ const Dashboard = () => {
         code éthique et déontologie
       </h1>
 
-      <div className="flex p-4 gap-x-5 items-center">
+      <div className="flex p-4 gap-x-5 items-center bg-gray-50 rounded-md">
         <div className="flex-1 bg-gray-100 border-b">
           <MenuComponent
             title="Nombres d’adhérents"
@@ -110,7 +110,7 @@ const Dashboard = () => {
           <Doughnut data={data} />
         </div>
       </div>
-      <div className="mt-10">
+      <div className="mt-10 bg-gray-50 rounded-md">
         <Outlet />
       </div>
 
