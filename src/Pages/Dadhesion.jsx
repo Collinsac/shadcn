@@ -1,8 +1,22 @@
 import Line from "@/components/Custom/Line";
 import Signature from "@/components/Custom/Signature";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
+import { XCircleIcon } from "lucide-react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Dadhesion = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="flex-1 p-10">
       {/* page 1 */}
@@ -140,6 +154,48 @@ const Dadhesion = () => {
 
           <Signature />
         </div>
+      </div>
+
+      <div className="flex items-center justify-between p-4 mx-auto max-w-[1000px]">
+        <Button
+          className=" bg-yellow-500 hover:bg-yellow-600"
+          onClick={() => navigate(-1)}
+        >
+          Retour
+        </Button>
+
+        <AlertDialog>
+          <AlertDialogTrigger>
+            <Button className=" bg-yellow-500 hover:bg-yellow-600">
+              Vailder
+            </Button>
+          </AlertDialogTrigger>
+
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle className="text-center my-5">
+                Vous etes sur de vouloir valider ?
+              </AlertDialogTitle>
+            </AlertDialogHeader>
+            <div className="justify-between flex items-center">
+              <AlertDialogAction className="p-0">
+                <Button className="mx-auto flex px-8 bg-yellow-500 hover:bg-yellow-600">
+                  Oui
+                </Button>
+              </AlertDialogAction>
+
+              <AlertDialogAction className="p-0">
+                <Button className="mx-auto flex px-8 bg-yellow-500 hover:bg-yellow-600">
+                  Non
+                </Button>
+              </AlertDialogAction>
+
+              <AlertDialogCancel className="p-0 px-2 absolute right-2 bg-transparent border-none shadow-none top-0">
+                <XCircleIcon size={3} />
+              </AlertDialogCancel>
+            </div>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
     </div>
   );
