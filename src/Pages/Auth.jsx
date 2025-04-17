@@ -13,20 +13,23 @@ const Auth = () => {
           {isInscription ? "INSCRIPTION" : "CONNEXION"}
         </p>
         <div className="mx-auto max-w-[400px] ">
+          <p className="text-xs mt-4 mb-2">Code Client</p>
+          <div className="flex gap-x-4">
+            <Input required />
+            {!isInscription && <Input required className="w-20" />}
+          </div>
+
           {isInscription && (
             <>
-              <p className="text-xs mt-4 mb-2">Code Client</p>
+              {/*  */}
+              <p className="text-xs mt-4 mb-2">Email/Login</p>
               <Input required />
+
+              {/*  */}
+              <p className="text-xs mt-4 mb-2">Mot de passe</p>
+              <Input type="password" required />
             </>
           )}
-
-          {/*  */}
-          <p className="text-xs mt-4 mb-2">Email/Login</p>
-          <Input required />
-
-          {/*  */}
-          <p className="text-xs mt-4 mb-2">Mot de passe</p>
-          <Input type="password" required />
 
           {isInscription && (
             <>
