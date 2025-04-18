@@ -24,12 +24,20 @@ import {
 } from "@/components/ui/tooltip";
 
 import { NavLink, useNavigate } from "react-router-dom";
+import {
+  Dock,
+  FileQuestion,
+  LayoutDashboard,
+  MessageCircleQuestion,
+  Scroll,
+} from "lucide-react";
 
 const AppSideBar = () => {
   const navigate = useNavigate();
   const Data = [
     {
       title: "Documentation",
+      icon: <Dock />,
       sub: [
         {
           title: "Charte Utilisateurs",
@@ -54,23 +62,23 @@ const AppSideBar = () => {
       ],
     },
     {
-      title: "Notifications",
-      route: "/home/notifications",
-    },
-    {
       title: "Quizz",
+      icon: <FileQuestion />,
       route: "/home/quizz",
     },
     {
       title: "Declaration",
+      icon: <Scroll />,
       route: "/home/declaration",
     },
     {
       title: "FAQ",
+      icon: <MessageCircleQuestion />,
       route: "/home/faq",
     },
     {
       title: "Tableau de bord",
+      icon: <LayoutDashboard />,
       route: "/home/dashboard",
     },
   ];
@@ -85,6 +93,7 @@ const AppSideBar = () => {
       >
         <SidebarMenuItem>
           <SidebarMenuButton className="p-5 font-bold rounded-none cursor-pointer">
+            {props.icon}
             {props.title}
           </SidebarMenuButton>
         </SidebarMenuItem>
@@ -98,6 +107,7 @@ const AppSideBar = () => {
         <SidebarMenuItem>
           <CollapsibleTrigger asChild>
             <SidebarMenuButton className="p-5 font-bold rounded-none cursor-pointer">
+              {props.icon}
               <p>{props.title}</p>
             </SidebarMenuButton>
           </CollapsibleTrigger>
@@ -149,7 +159,7 @@ const AppSideBar = () => {
     );
   };
   return (
-    <Sidebar >
+    <Sidebar>
       <SidebarContent className="pt-[45px] overflow-hidden">
         <SidebarGroup className="px-0">
           <SidebarMenu>

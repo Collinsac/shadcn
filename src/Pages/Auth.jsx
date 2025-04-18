@@ -16,30 +16,47 @@ const Auth = () => {
           <p className="text-xs mt-4 mb-2">Code Client</p>
           <div className="flex gap-x-4">
             <Input required />
-            {!isInscription && <Input required className="w-20" />}
+            <Input required className="w-20" />
           </div>
 
           {isInscription && (
             <>
               {/*  */}
-              <p className="text-xs mt-4 mb-2">Email/Login</p>
-              <Input required />
+              <p className="text-xs mt-4 mb-2">nom Ges</p>
+              <select
+                name=""
+                id=""
+                className="w-full bg-gray-50 shadow-sm py-2 rounded-md border text-gray-300 text-sm"
+              >
+                <optgroup>
+                  <option value="RH">RH</option>
+                  <option value="Autre">Autre</option>
+                </optgroup>
+              </select>
 
               {/*  */}
-              <p className="text-xs mt-4 mb-2">Mot de passe</p>
-              <Input type="password" required />
+              <p className="text-xs mt-4 mb-2">Email</p>
+              <Input
+                required
+                placeholder="saha@groupcomercial.com"
+                className="placeholder:text-gray-300"
+              />
             </>
           )}
 
           {isInscription && (
             <>
               {/*  */}
-              <p className="text-xs mt-4 mb-2">Confirmer mot de passe</p>
-              <Input type="password" required />
+              <p className="text-xs mt-4 mb-2">Noms et prenoms</p>
+              <Input type="text" required />
+
+              {/*  */}
+              <p className="text-xs mt-4 mb-2">Numero de telephone</p>
+              <Input type="tel" required />
             </>
           )}
 
-          <Link to={"/home"}>
+          <Link to={`${isInscription ? "/home" : "/verification"}`}>
             <Button className="mx-auto flex mt-4 bg-yellow-500 hover:bg-yellow-600">
               {isInscription ? "Inscription" : "Connexion"}
             </Button>

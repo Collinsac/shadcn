@@ -21,6 +21,7 @@ import ListOfadherents from "./Pages/ListOfadherents";
 import ListOfNonadherents from "./Pages/ListOfNonadherents";
 import Dadhesion from "./Pages/Dadhesion";
 import RenouvellementDadhesion from "./Pages/RenouvellementDadhesion";
+import Verification from "./Pages/Verification";
 const App = () => {
   return (
     <BrowserRouter>
@@ -58,6 +59,8 @@ const App = () => {
           </Route>
           <Route path="/home/demand/:value" element={<Demand />} />
         </Route>
+
+        <Route path="/verification" element={<Verification />} />
       </Routes>
     </BrowserRouter>
   );

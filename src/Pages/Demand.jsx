@@ -38,6 +38,13 @@ const Demand = () => {
     },
   ]);
 
+  const [fieldsDec, setFieldsDec] = useState([
+    {
+      id: 1,
+      value: "",
+    },
+  ]);
+
   const [fieldsCourtage, setFieldsCourtage] = useState([
     {
       id: 1,
@@ -48,16 +55,20 @@ const Demand = () => {
   const addField = (state) => {
     !state
       ? setFields((prev) => [...prev, { id: prev.length + 1, value: "" }])
-      : setFieldsCourtage((prev) => [
+      : state === "one"
+      ? setFieldsCourtage((prev) => [
           ...prev,
           { id: prev.length + 1, value: "" },
-        ]);
+        ])
+      : setFieldsDec((prev) => [...prev, { id: prev.length + 1, value: "" }]);
   };
 
   const deleteField = (id, state) => {
     !state
       ? setFields((prev) => prev.filter((field) => id !== field.id))
-      : setFieldsCourtage((prev) => prev.filter((field) => id !== field.id));
+      : state === "one"
+      ? setFieldsCourtage((prev) => prev.filter((field) => id !== field.id))
+      : setFieldsDec((prev) => prev.filter((field) => id !== field.id));
   };
 
   const chageFieldValue = (id, value, state) => {
@@ -67,7 +78,13 @@ const Demand = () => {
           array[id - 1].value = value;
           return array;
         })
-      : setFieldsCourtage((prev) => {
+      : state === "one"
+      ? setFieldsCourtage((prev) => {
+          let array = [...prev];
+          array[id - 1].value = value;
+          return array;
+        })
+      : setFieldsDec((prev) => {
           let array = [...prev];
           array[id - 1].value = value;
           return array;
@@ -87,7 +104,37 @@ const Demand = () => {
             </h1>
           </div>
           <Input placeholder="Noms et Prenoms *" />
-          <Input placeholder="Declaration *" />
+
+          <div className="relative">
+            <Input placeholder="Declaration *" />
+
+            <PlusCircle
+              className="absolute right-5 top-1/2 -translate-y-1/2"
+              size={20}
+              strokeWidth={2}
+              onClick={() => addField(true)}
+            />
+          </div>
+
+          {/* add feilds */}
+
+          {fieldsDec.map((field) => (
+            <div key={field.id} className="relative">
+              <XCircle
+                className="absolute -left-8 top-1/2 -translate-y-1/2"
+                size={20}
+                strokeWidth={2}
+                onClick={() => deleteField(field.id, true)}
+              />
+              <Input
+                value={field.value}
+                onChange={(e) =>
+                  chageFieldValue(field.id, e.target.value, true)
+                }
+              />
+            </div>
+          ))}
+
           <Input placeholder="Commentaries *" />
           <Input placeholder="Direction *" />
           <Input placeholder="Entreprise *" />
@@ -126,7 +173,7 @@ const Demand = () => {
               className="absolute right-5 top-1/2 -translate-y-1/2"
               size={20}
               strokeWidth={2}
-              onClick={() => addField(true)}
+              onClick={() => addField("one")}
             />
           </div>
 
@@ -173,7 +220,10 @@ const Demand = () => {
               </PopoverContent>
             </Popover>
 
-            <Input placeholder="Signature *" />
+            <div className="flex items-center gap-x-3 ml-auto">
+              <p>Signature *</p>
+              <input type="checkbox" name="" id="" />
+            </div>
           </div>
 
           <p className="text-center">
@@ -183,45 +233,54 @@ const Demand = () => {
             <input type="checkbox" name="" id="" />
             <p>J'accepte le code d'ethique et deontologie</p>
           </div>
-          <AlertDialog>
-            <AlertDialogTrigger>
-              <Button className="mx-auto flex mt-4 px-8 bg-yellow-500 hover:bg-yellow-600">
-                Soumettre
+
+          <div className="flex items-center justify-center gap-x-16">
+            {value !== "new" && (
+              <Button className="flex mt-4 px-8 bg-yellow-500 hover:bg-yellow-600">
+                Modifier
               </Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle className="text-center my-5">
-                  Vous etes sur de Vouioir soumettre?
-                </AlertDialogTitle>
-                {/* <AlertDialogDescription>
+            )}
+
+            <AlertDialog>
+              <AlertDialogTrigger>
+                <Button className="flex mt-4 px-8 bg-yellow-500 hover:bg-yellow-600">
+                  Soumettre
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle className="text-center my-5">
+                    Vous etes sur de Vouioir soumettre?
+                  </AlertDialogTitle>
+                  {/* <AlertDialogDescription>
                   This action cannot be undone. This will permanently delete
                   your account and remove your data from our servers.
                 </AlertDialogDescription> */}
-              </AlertDialogHeader>
-              <div className="justify-between flex items-center">
-                <Link
-                  to={
-                    value === "new"
-                      ? "/home/dadhesion"
-                      : "/home/renouvellementdadhesion"
-                  }
-                >
-                  <AlertDialogAction className="p-0">
-                    <Button className="mx-auto flex px-8 bg-yellow-500 hover:bg-yellow-600">
-                      Oui
-                    </Button>
-                  </AlertDialogAction>
-                </Link>
+                </AlertDialogHeader>
+                <div className="justify-between flex items-center">
+                  <Link
+                    to={
+                      value === "new"
+                        ? "/home/dadhesion"
+                        : "/home/renouvellementdadhesion"
+                    }
+                  >
+                    <AlertDialogAction className="p-0">
+                      <Button className="mx-auto flex px-8 bg-yellow-500 hover:bg-yellow-600">
+                        Oui
+                      </Button>
+                    </AlertDialogAction>
+                  </Link>
 
-                <AlertDialogCancel className="p-0">
-                  <Button className="mx-auto flex px-8 bg-yellow-500 hover:bg-yellow-600">
-                    non
-                  </Button>
-                </AlertDialogCancel>
-              </div>
-            </AlertDialogContent>
-          </AlertDialog>
+                  <AlertDialogCancel className="p-0">
+                    <Button className="mx-auto flex px-8 bg-yellow-500 hover:bg-yellow-600">
+                      non
+                    </Button>
+                  </AlertDialogCancel>
+                </div>
+              </AlertDialogContent>
+            </AlertDialog>
+          </div>
         </div>
       </div>
     </div>

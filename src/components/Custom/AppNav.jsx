@@ -1,6 +1,6 @@
 import React from "react";
 import { SidebarTrigger } from "../ui/sidebar";
-import { LogOut, LogOutIcon } from "lucide-react";
+import { Bell, LogOut, LogOutIcon } from "lucide-react";
 import logo from "../../assets/Images/Logo.svg";
 const AppNav = () => {
   return (
@@ -9,7 +9,11 @@ const AppNav = () => {
         <SidebarTrigger />
         <img src={logo} alt="Logo" width={30} />
       </div>
-      <LogOut size={15} />
+
+      <div className="flex gap-x-8 mr-4">
+        <Bell size={15} />
+        <LogOut size={15} />
+      </div>
     </div>
   );
 };

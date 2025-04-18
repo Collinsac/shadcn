@@ -116,11 +116,21 @@ const Dashboard = () => {
 
       <div className="flex items-center justify-between p-4">
         <AlertDialog>
-          <AlertDialogTrigger>
-            <Button className=" bg-yellow-500 hover:bg-yellow-600">
-              Exporter
-            </Button>
-          </AlertDialogTrigger>
+          <div className="flex gap-x-6">
+            <AlertDialogTrigger>
+              <Button className=" bg-yellow-500 hover:bg-yellow-600">
+                Exporter
+              </Button>
+            </AlertDialogTrigger>
+            {/* this is the label for the file selection */}
+            <label
+              htmlFor="file"
+              className=" bg-yellow-500 hover:bg-yellow-600 text-white rounded-md flex items-center justify-center px-2 text-sm shadow-sm"
+            >
+              Ajouter un document
+            </label>
+            <input type="file" name="file" id="file" className="opacity-0" />
+          </div>
 
           <AlertDialogContent>
             <AlertDialogHeader>
