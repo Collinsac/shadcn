@@ -2,9 +2,27 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import React, { useState } from "react";
 import user from "../assets/Images/user.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Auth = () => {
   const [isInscription, setisInscription] = useState(false);
+  const [selectValue, setSelectValue] = useState("RH");
+  const [email, setemail] = useState("");
+  const [error, seterror] = useState("");
+  const navigate = useNavigate();
+  const HandleSubmit = () => {
+    if (
+      selectValue === "RH" &&
+      email.includes("@cbcgroupcomercialbank.com") &&
+      !isInscription
+    ) {
+      seterror("");
+      navigate(`${isInscription ? "/home" : "/verification"}`);
+    } else {
+      seterror("Address email invalid !");
+      // navigate(`${!isInscription ? "/home" : "/verification"}`);
+    }
+  };
+
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="p-4  py-20 bg-gray-50 flex-1 max-w-[600px] shadow-lg rounded-lg ">
@@ -26,28 +44,45 @@ const Auth = () => {
               <select
                 name=""
                 id=""
+                value={selectValue}
+                onChange={(e) => setSelectValue(e.target.value)}
                 className="w-full bg-gray-50 shadow-sm py-2 rounded-md border text-gray-300 text-sm"
               >
-                <optgroup>
-                  <option value="RH">RH</option>
-                  <option value="Autre">Autre</option>
-                </optgroup>
+                <option value="RH">RH</option>
+                <option value="Autre">Autre</option>
               </select>
+
+              {selectValue === "Autre" && (
+                <>
+                  <p className="text-xs mt-4 mb-2">Autres</p>
+                  <Input
+                    required
+                    placeholder="Veuillez preciser le nom du gestionnaire"
+                    className="placeholder:text-gray-300"
+                  />
+                </>
+              )}
 
               {/*  */}
               <p className="text-xs mt-4 mb-2">Email</p>
               <Input
                 required
-                placeholder="saha@groupcomercial.com"
+                placeholder={`${
+                  selectValue === "RH" ? "@cbcgroupcomercialbank.com" : ""
+                }`}
+                value={email}
+                onChange={(e) => setemail(e.target.value)}
                 className="placeholder:text-gray-300"
               />
+
+              <p className="text-red-600 text-sm py-1">{error}</p>
             </>
           )}
 
           {isInscription && (
             <>
               {/*  */}
-              <p className="text-xs mt-4 mb-2">Noms et prenoms</p>
+              <p className="text-xs mt- mb-2">Noms et prenoms</p>
               <Input type="text" required />
 
               {/*  */}
@@ -56,11 +91,15 @@ const Auth = () => {
             </>
           )}
 
-          <Link to={`${isInscription ? "/home" : "/verification"}`}>
-            <Button className="mx-auto flex mt-4 bg-yellow-500 hover:bg-yellow-600">
-              {isInscription ? "Inscription" : "Connexion"}
-            </Button>
-          </Link>
+          <Button
+            className="mx-auto flex mt-4 bg-yellow-500 hover:bg-yellow-600"
+            onClick={() => {
+              navigate();
+              HandleSubmit();
+            }}
+          >
+            {isInscription ? "Inscription" : "Connexion"}
+          </Button>
 
           <p className="text-sm mt-5 text-center text-gray-400">
             {isInscription
