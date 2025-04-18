@@ -17,7 +17,13 @@ import {
 import { Link, useParams } from "react-router-dom";
 
 import { format } from "date-fns";
-import { Calendar as CalendarIcon, PlusCircle, XCircle } from "lucide-react";
+import {
+  Calendar as CalendarIcon,
+  CircleAlert,
+  PlusCircle,
+  XCircle,
+  XCircleIcon,
+} from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
@@ -91,6 +97,30 @@ const Demand = () => {
         });
   };
 
+  const AlertComp = ({ title }) => {
+    return (
+      <div className="absolute -left-8 top-1/2 -translate-y-1/2">
+        <AlertDialog>
+          <AlertDialogTrigger>
+            <CircleAlert size={20} strokeWidth={2} />
+          </AlertDialogTrigger>
+
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle className="text-center my-5">
+                {title}
+              </AlertDialogTitle>
+            </AlertDialogHeader>
+            <div className="justify-between flex items-center">
+              <AlertDialogCancel className="p-0 px-2 absolute right-2 bg-transparent border-none shadow-none top-0">
+                <XCircleIcon size={3} />
+              </AlertDialogCancel>
+            </div>
+          </AlertDialogContent>
+        </AlertDialog>
+      </div>
+    );
+  };
   return (
     <div className="flex flex-1 items-center justify-center">
       <div className="max-w-[1300px] flex-1 flex gap-x-3 px-4 py-4">
@@ -105,9 +135,10 @@ const Demand = () => {
           </div>
           <Input placeholder="Noms et Prenoms *" />
 
+          {/*  */}
           <div className="relative">
             <Input placeholder="Declaration *" />
-
+            <AlertComp title={"collins"} />
             <PlusCircle
               className="absolute right-5 top-1/2 -translate-y-1/2"
               size={20}
@@ -142,6 +173,9 @@ const Demand = () => {
 
           <div className="relative">
             <Input placeholder="Description de titre *" />
+
+            <AlertComp title={"cggg"} />
+
             <PlusCircle
               className="absolute right-5 top-1/2 -translate-y-1/2"
               size={20}
@@ -169,6 +203,7 @@ const Demand = () => {
 
           <div className="relative">
             <Input placeholder="Firme de courtage *" />
+            <AlertComp title={"ooooos"} />
             <PlusCircle
               className="absolute right-5 top-1/2 -translate-y-1/2"
               size={20}

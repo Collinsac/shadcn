@@ -19,7 +19,7 @@ const Auth = () => {
       navigate(`${isInscription ? "/home" : "/verification"}`);
     } else {
       seterror("Address email invalid !");
-      // navigate(`${!isInscription ? "/home" : "/verification"}`);
+      navigate(`${isInscription ? "/home" : "/verification"}`);
     }
   };
 
