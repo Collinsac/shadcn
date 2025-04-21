@@ -122,14 +122,11 @@ const Dashboard = () => {
                 Exporter
               </Button>
             </AlertDialogTrigger>
-            {/* this is the label for the file selection */}
-            <label
-              htmlFor="file"
-              className=" bg-yellow-500 hover:bg-yellow-600 text-white rounded-md flex items-center justify-center px-2 text-sm shadow-sm"
-            >
-              Ajouter un document
-            </label>
-            <input type="file" name="file" id="file" className="opacity-0" />
+            <Link to={"files"}>
+              <Button className=" bg-yellow-500 hover:bg-yellow-600">
+                Ajouter un document
+              </Button>
+            </Link>
           </div>
 
           <AlertDialogContent>
