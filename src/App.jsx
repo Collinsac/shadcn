@@ -22,6 +22,7 @@ import ListOfNonadherents from "./Pages/ListOfNonadherents";
 import Dadhesion from "./Pages/Dadhesion";
 import RenouvellementDadhesion from "./Pages/RenouvellementDadhesion";
 import Verification from "./Pages/Verification";
+import SelectFileDash from "./Pages/SelectFileDash";
 const App = () => {
   return (
     <BrowserRouter>
@@ -57,6 +58,8 @@ const App = () => {
               element={<ListOfNonadherents />}
             />
           </Route>
+          <Route path="/home/dashboard/files" element={<SelectFileDash />} />
+
           <Route path="/home/demand/:value" element={<Demand />} />
         </Route>
 
